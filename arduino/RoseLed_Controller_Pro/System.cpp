@@ -2,7 +2,7 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : System
- * Version     : 0.2.1 Alpha
+ * Version     : 1.0.0 Alpha
  *
  * Description :
  * Gestion du système principal du RoseLed Controller Pro.

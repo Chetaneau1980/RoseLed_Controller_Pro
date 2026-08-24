@@ -2,10 +2,15 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : GestionnaireAnimations
- * Version     : 0.2.1 Alpha
+ * Version     : 1.0.0 Alpha
  *
  * Description :
- * Gestionnaire central des animations.
+ * Gestionnaire central des animations du RoseLed Controller Pro.
+ *
+ * Ce module assure :
+ *  - la mémorisation de l'animation sélectionnée ;
+ *  - la sélection d'une nouvelle animation ;
+ *  - la lecture de l'animation actuellement active.
  *
  * Projet :
  *   Octobre Rose
@@ -29,7 +34,7 @@
 // Variables privées
 //==========================================================
 
-// Animation actuellement sélectionnée
+// Animation actuellement sélectionnée.
 static AnimationActive animationActive = AnimationActive::ETEINTE;
 
 //==========================================================

@@ -5,17 +5,17 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : Bluetooth
- * Version     : 0.2.1 Alpha
+ * Version     : 1.0.0 Alpha
  *
  * Description :
  * Gestion de la communication Bluetooth Classic entre
  * le RoseLed Controller Pro et l'application Android.
  *
  * Ce module assure :
- *  - l'initialisation du Bluetooth ;
- *  - la gestion de la connexion ;
- *  - la réception des commandes ;
- *  - l'envoi des informations au téléphone.
+ *  - l'initialisation du Bluetooth Classic ;
+ *  - la gestion de la communication ;
+ *  - la réception des commandes de l'application Android ;
+ *  - l'envoi des informations vers l'application.
  *
  * Projet :
  *   Octobre Rose
@@ -35,19 +35,26 @@
 
 #include <Arduino.h>
 #include <BluetoothSerial.h>
+
+//==========================================================
+// Objet Bluetooth
+//==========================================================
+
+// Objet Bluetooth Classic global.
+extern BluetoothSerial SerialBT;
+
 //==========================================================
 // Initialisation
 //==========================================================
 
-// Initialise le Bluetooth
+// Initialise la communication Bluetooth Classic.
 void InitialiserBluetooth(void);
 
 //==========================================================
 // Gestion Bluetooth
 //==========================================================
 
-// Gestion de la communication Bluetooth
+// Gère la réception et le traitement des communications Bluetooth.
 void GererBluetooth(void);
-// Objet Bluetooth global
-extern BluetoothSerial SerialBT;
+
 #endif // BLUETOOTH_H

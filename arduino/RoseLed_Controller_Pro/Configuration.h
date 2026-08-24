@@ -5,7 +5,7 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : Configuration
- * Version     : 0.3.1 Alpha
+ * Version     : 1.0.0 Alpha
  *
  * Description :
  * Configuration générale du RoseLed Controller Pro.

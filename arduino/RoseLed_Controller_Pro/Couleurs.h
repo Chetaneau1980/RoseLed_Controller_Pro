@@ -3,19 +3,33 @@
 
 /******************************************************************************
  * RoseLed Controller Pro Firmware
- * Version : 0.2.1 Alpha
+ * ---------------------------------------------------------------------------
+ * Module      : Couleurs
+ * Version     : 1.0.0 Alpha
  *
- * Projet : Octobre Rose
- * Carte : RoseLed Controller Pro Rev.A
- * Microcontrôleur : ESP32-WROOM-32E
+ * Description :
+ * Palette centralisée des couleurs utilisées par
+ * le RoseLed Controller Pro.
+ *
+ * Ce module contient :
+ *  - les couleurs dédiées au projet Octobre Rose ;
+ *  - les couleurs standards ;
+ *  - les couleurs utilisées pour les états techniques.
+ *
+ * Projet :
+ *   Octobre Rose
+ *
+ * Carte :
+ *   RoseLed Controller Pro Rev.A
+ *
+ * Microcontrôleur :
+ *   ESP32-WROOM-32E
  *
  * Concepteur électronique et développeur :
- * Jérémie
+ *   Jérémie
  *
  * Assistance au développement logiciel :
- * ChatGPT (OpenAI)
- *
- * Palette officielle des couleurs
+ *   ChatGPT (OpenAI)
  ******************************************************************************/
 
 #include <FastLED.h>
@@ -33,15 +47,15 @@ constexpr CRGB COULEUR_FUCHSIA      = CRGB(255, 0, 255);
 // Couleurs standards
 //==========================================================
 
-constexpr CRGB COULEUR_ROUGE   = CRGB::Red;
-constexpr CRGB COULEUR_VERT    = CRGB::Green;
-constexpr CRGB COULEUR_BLEU    = CRGB::Blue;
-constexpr CRGB COULEUR_BLANC   = CRGB::White;
-constexpr CRGB COULEUR_NOIR    = CRGB::Black;
-constexpr CRGB COULEUR_JAUNE   = CRGB::Yellow;
-constexpr CRGB COULEUR_ORANGE  = CRGB::Orange;
-constexpr CRGB COULEUR_VIOLET  = CRGB::Purple;
-constexpr CRGB COULEUR_CYAN    = CRGB::Cyan;
+constexpr CRGB COULEUR_ROUGE  = CRGB::Red;
+constexpr CRGB COULEUR_VERT   = CRGB::Green;
+constexpr CRGB COULEUR_BLEU   = CRGB::Blue;
+constexpr CRGB COULEUR_BLANC  = CRGB::White;
+constexpr CRGB COULEUR_NOIR   = CRGB::Black;
+constexpr CRGB COULEUR_JAUNE  = CRGB::Yellow;
+constexpr CRGB COULEUR_ORANGE = CRGB::Orange;
+constexpr CRGB COULEUR_VIOLET = CRGB::Purple;
+constexpr CRGB COULEUR_CYAN   = CRGB::Cyan;
 
 //==========================================================
 // Couleurs techniques

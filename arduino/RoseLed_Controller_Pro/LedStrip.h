@@ -5,7 +5,7 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : LedStrip
- * Version     : 0.3.1 Alpha
+ * Version     : 1.0.0 Alpha
  *
  * Description :
  * Gestion complète du bandeau de LEDs WS2812B.

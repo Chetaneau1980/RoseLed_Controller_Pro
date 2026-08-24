@@ -5,7 +5,7 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : System
- * Version     : 0.2.1 Alpha
+ * Version     : 1.0.0 Alpha
  *
  * Description :
  * Gestion du système principal du RoseLed Controller Pro.
@@ -50,10 +50,10 @@
 // Gestion du système
 //==========================================================
 
-// Initialisation complète du firmware
+// Initialisation complète du firmware.
 void InitialiserSysteme(void);
 
-// Boucle principale du firmware
+// Boucle principale du firmware.
 void GererSysteme(void);
 
 #endif // SYSTEM_H

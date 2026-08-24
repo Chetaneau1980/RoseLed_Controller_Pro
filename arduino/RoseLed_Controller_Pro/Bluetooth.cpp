@@ -2,7 +2,7 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : Bluetooth
- * Version     : 0.3.2 Alpha
+ * Version     : 1.0.0 Alpha
  *
  * Description :
  * Communication Bluetooth Classic entre l'ESP32
@@ -332,7 +332,7 @@ void TraiterLuminosite(
      * Android travaille de 0 à 100 %.
      *
      * Le firmware ne convertit volontairement PAS
-     * vers 255.
+     * directement vers 255.
      *
      * Exemple avec LUMINOSITE_MAX = 80 :
      *
@@ -343,6 +343,7 @@ void TraiterLuminosite(
      * Impossible donc de dépasser la limite définie
      * dans Configuration.h.
      */
+
     const uint8_t luminosite =
             static_cast<uint8_t>(
                     map(

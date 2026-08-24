@@ -1,133 +1,286 @@
-# 🌹 RoseLed Controller Pro Firmware
+# 🌹 RoseLed Controller Pro
 
 # Protocole Bluetooth
-Version : 0.1
-Projet : Octobre Rose
+
+**Version du firmware : 1.0.0 Alpha**  
+**Projet : Octobre Rose**
 
 ---
 
-# Description
+## Description
 
-Ce document décrit les commandes Bluetooth utilisées entre
-l'application Android et le RoseLed Controller Pro.
+Ce document décrit le protocole de communication Bluetooth Classic utilisé entre l'application Android et le firmware du RoseLed Controller Pro.
 
-Toutes les commandes sont envoyées sous forme de texte ASCII.
+La communication utilise le Bluetooth Classic SPP.
 
-Exemple :
-
-RESPIRATION
-
-ou
-
-LUMINOSITE=180
+Les commandes sont envoyées sous forme de texte et doivent être terminées par un retour à la ligne.
 
 ---
 
-# Commandes générales
+## Format général
 
-## Allumer le panneau
+Certaines commandes ne nécessitent aucun paramètre :
 
-ON
+STATUS
 
----
-
-## Éteindre le panneau
+VERSION
 
 OFF
 
----
+D'autres utilisent le format :
 
-## Couleur officielle Octobre Rose
+COMMANDE PARAMETRE
 
-ROSE
+Exemple :
 
----
+BRIGHTNESS 50
 
-## Couleur personnalisée
+ou :
 
-COULEUR=R,G,B
-
-Exemple
-
-COULEUR=255,20,147
+COLOR #FF1493
 
 ---
 
-# Luminosité
+# Commandes disponibles
 
-LUMINOSITE=0 à 255
+## STATUS
 
-Exemple
+Vérifie la communication avec le contrôleur.
 
-LUMINOSITE=180
+Commande :
+
+STATUS
+
+Réponse :
+
+CONNECTED
 
 ---
 
-# Vitesse des animations
+## VERSION
 
-VITESSE=1 à 100
+Demande la version du firmware installée sur l'ESP32.
 
-Exemple
+Commande :
 
-VITESSE=75
+VERSION
+
+Réponse actuelle :
+
+1.0.0 Alpha
+
+---
+
+## COLOR
+
+Permet de sélectionner une couleur fixe.
+
+Format :
+
+COLOR #RRGGBB
+
+Exemple pour la couleur Octobre Rose :
+
+COLOR #FF1493
+
+Le format RGB utilise une notation hexadécimale.
+
+Après réception d'une couleur valide, le contrôleur répond :
+
+OK
+
+En cas de valeur incorrecte :
+
+ERROR
+
+---
+
+## BRIGHTNESS
+
+Permet de régler la luminosité depuis l'application Android.
+
+Format :
+
+BRIGHTNESS 0..100
+
+Exemples :
+
+BRIGHTNESS 0
+
+BRIGHTNESS 50
+
+BRIGHTNESS 100
+
+La valeur envoyée par Android est exprimée en pourcentage.
+
+Le firmware applique ensuite automatiquement la limite de sécurité définie par :
+
+LUMINOSITE_MAX
+
+dans le fichier :
+
+Configuration.h
+
+Ainsi, une commande `BRIGHTNESS 100` ne permet pas de dépasser la limite maximale autorisée par le firmware.
+
+Réponse :
+
+OK
+
+ou :
+
+ERROR
 
 ---
 
 # Animations
 
-RESPIRATION
+La sélection d'une animation utilise le format :
 
-BATTEMENT
+ANIMATION Nom
 
-ARCENCIEL
+## Arc-en-ciel
 
-CHENILLARD
+ANIMATION Arc-en-ciel
 
-SCINTILLEMENT
+## Respiration
 
-FIXE
+ANIMATION Respiration
 
----
+## Feu
 
-# Informations système
+ANIMATION Feu
 
-INFO
+## Océan
 
-Réponse du contrôleur
+ANIMATION Océan
 
-RoseLed Controller Pro Firmware
-Version
-Carte
-État Bluetooth
+La variante suivante est également acceptée :
 
----
+ANIMATION Ocean
 
-# Réponses
+## Flash
+
+ANIMATION Flash
+
+## Couleur fixe
+
+ANIMATION Fixe
+
+## Octobre Rose
+
+ANIMATION Octobre Rose
+
+Après sélection d'une animation valide :
 
 OK
 
-Commande exécutée.
+Si le nom de l'animation n'est pas reconnu :
 
-ERREUR
+ERROR
 
-Commande inconnue.
+---
+
+# Extinction
+
+## OFF
+
+Éteint le panneau et sélectionne l'état `ETEINTE`.
+
+Commande :
+
+OFF
+
+Réponse :
+
+OK
+
+---
+
+# Réponses du contrôleur
+
+Le contrôleur peut envoyer les réponses suivantes :
+
+## CONNECTED
+
+La communication avec le contrôleur est active.
+
+## OK
+
+La commande a été reconnue et exécutée.
+
+## ERROR
+
+La commande a été reconnue mais son paramètre est invalide.
+
+## UNKNOWN_COMMAND
+
+La commande envoyée n'est pas reconnue par le firmware.
+
+---
+
+# Limite des commandes
+
+La taille maximale d'une commande reçue est limitée par le firmware.
+
+Les commandes doivent rester courtes et respecter exactement le protocole défini dans ce document.
+
+---
+
+# Architecture de communication
+
+Application Android
+
+↓
+
+Bluetooth Classic SPP
+
+↓
+
+ESP32-WROOM-32E
+
+↓
+
+RoseLed Controller Pro
+
+↓
+
+FastLED
+
+↓
+
+LEDs WS2812B
+
+---
+
+# Compatibilité actuelle
+
+- ESP32-WROOM-32E
+- Bluetooth Classic SPP
+- Application Android RoseLed Controller Pro
+- FastLED
+- LEDs WS2812B
 
 ---
 
 # Évolutions futures
 
-Bluetooth Classic
+Les fonctionnalités futures éventuelles doivent rester distinctes du protocole actuellement implémenté.
 
-Application Android
+Toute nouvelle commande Bluetooth devra être ajoutée :
 
-Compatibilité WLED
-
-Mise à jour OTA
-
-Sauvegarde automatique des paramètres
+1. au firmware ;
+2. à l'application Android ;
+3. à ce document.
 
 ---
 
-🌹 RoseLed Controller Pro
+## ❤️ RoseLed Controller Pro
 
-Illuminer pour sensibiliser.
+**Développé par Jérémie**
+
+Assistance au développement logiciel : **ChatGPT (OpenAI)**
+
+**Projet Octobre Rose**
+
+🌹 *Illuminer pour sensibiliser.*

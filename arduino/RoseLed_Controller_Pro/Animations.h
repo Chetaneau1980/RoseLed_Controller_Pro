@@ -5,10 +5,15 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : Animations
- * Version     : 0.3.0 Alpha
+ * Version     : 1.0.0 Alpha
  *
  * Description :
  * Gestion complète des animations lumineuses du panneau WS2812B.
+ *
+ * Ce module assure :
+ *  - l'initialisation des animations ;
+ *  - l'exécution de l'animation sélectionnée ;
+ *  - l'interface entre le gestionnaire et les effets lumineux.
  *
  * Projet :
  *   Octobre Rose
@@ -44,28 +49,28 @@ void GererAnimations(void);
 // Animations disponibles
 //==========================================================
 
-// Panneau éteint
+// Panneau éteint.
 void AnimationEteinte(void);
 
-// Couleur fixe
+// Couleur fixe.
 void AnimationFixe(void);
 
-// Respiration
+// Respiration.
 void AnimationRespiration(void);
 
-// Arc-en-ciel
+// Arc-en-ciel.
 void AnimationArcEnCiel(void);
 
-// Feu
+// Feu.
 void AnimationFeu(void);
 
-// Océan
+// Océan.
 void AnimationOcean(void);
 
-// Flash
+// Flash.
 void AnimationFlash(void);
 
-// Animation officielle Octobre Rose
+// Animation officielle Octobre Rose.
 void AnimationOctobreRose(void);
 
 #endif // ANIMATIONS_H

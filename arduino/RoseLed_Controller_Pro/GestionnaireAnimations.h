@@ -5,7 +5,7 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : GestionnaireAnimations
- * Version     : 0.3.0 Alpha
+ * Version     : 1.0.0 Alpha
  *
  * Description :
  * Gestionnaire central des animations du RoseLed Controller Pro.
@@ -53,13 +53,13 @@ enum class AnimationActive
 // Fonctions
 //==========================================================
 
-// Initialisation du gestionnaire
+// Initialisation du gestionnaire.
 void InitialiserGestionnaireAnimations(void);
 
-// Sélection d'une animation
+// Sélection d'une animation.
 void SelectionnerAnimation(AnimationActive animation);
 
-// Retourne l'animation actuellement active
+// Retourne l'animation actuellement active.
 AnimationActive ObtenirAnimationActive(void);
 
 #endif // GESTIONNAIRE_ANIMATIONS_H

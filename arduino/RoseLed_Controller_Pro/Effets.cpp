@@ -2,13 +2,22 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : Effets
- * Version     : 0.3.2 Alpha
+ * Version     : 1.0.0 Alpha
  *
  * Description :
- * Effets lumineux du RoseLed Controller Pro.
+ * Gestion des effets lumineux du RoseLed Controller Pro.
  *
- * Les effets sont non bloquants afin de conserver
- * une communication Bluetooth réactive.
+ * Les effets sont exécutés de manière non bloquante afin de conserver
+ * une communication Bluetooth réactive pendant les animations.
+ *
+ * Ce module assure :
+ *  - la gestion de la couleur fixe ;
+ *  - l'effet de respiration rose ;
+ *  - l'effet arc-en-ciel ;
+ *  - l'effet feu ;
+ *  - l'effet océan ;
+ *  - l'effet flash ;
+ *  - l'animation officielle Octobre Rose.
  *
  * Projet :
  *   Octobre Rose
