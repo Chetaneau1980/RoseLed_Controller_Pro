@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#050508"
+    android:fillViewport="true"
+    android:overScrollMode="never">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="18dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="18dp"
+        android:paddingBottom="30dp">
+
+        <!-- EN-TÊTE -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/boutonRetourFavoris"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="‹"
+                android:textColor="#FF4FA3"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⭐ FAVORIS"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RoseLed Controller Pro"
+                    android:textColor="#FF4FA3"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="52dp"
+                android:layout_height="52dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="110dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#FF2E8B" />
+
+        <!-- TEXTE -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:text="MES EFFETS FAVORIS"
+            android:textColor="#FF5AA7"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Retrouvez rapidement vos ambiances lumineuses préférées."
+            android:textColor="#A8A8AE"
+            android:textSize="14sp" />
+
+        <!-- LIGNE 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/favoriArcEnCiel"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="#21121D"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="🌈&#10;&#10;Arc-en-ciel&#10;★"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/favoriRespiration"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="#21121D"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="💗&#10;&#10;Respiration&#10;★"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- LIGNE 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/favoriFeu"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="#21121D"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="🔥&#10;&#10;Feu&#10;★"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/favoriOcean"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="#21121D"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="🌊&#10;&#10;Océan&#10;★"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- LIGNE 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/favoriFlash"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="#21121D"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="⚡&#10;&#10;Flash&#10;★"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/favoriFixe"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="#21121D"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="🎨&#10;&#10;Fixe&#10;★"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- OCTOBRE ROSE -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="22dp"
+            android:background="#351020"
+            android:gravity="center"
+            android:text="🎀  OCTOBRE ROSE&#10;Mode spécial RoseLed"
+            android:textAlignment="center"
+            android:textColor="#FF70B4"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="★  RoseLed Controller Pro  ★"
+            android:textColor="#76566A"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</ScrollView>

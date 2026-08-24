@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RoseLed Controller Pro</string>
+    <string name="bluetooth_status_disconnected">État : Déconnecté</string>
+    <string name="bluetooth_status_connecting">État : Connexion…</string>
+    <string name="bluetooth_status_connected">État : Connecté à %1$s</string>
+    <string name="connect">CONNECTER</string>
+    <string name="disconnect">DÉCONNECTER</string>
+    <string name="color">Couleur</string>
+    <string name="choose_color">CHOISIR UNE COULEUR</string>
+    <string name="brightness">Luminosité</string>
+    <string name="brightness_value">%1$d %%</string>
+    <string name="animation">Animation</string>
+    <string name="off">OFF</string>
+    <string name="choose_device">Choisir un appareil associé</string>
+    <string name="cancel">ANNULER</string>
+    <string name="no_paired_device">Associez d’abord RoseLed Controller Pro dans les réglages Bluetooth.</string>
+    <string name="bluetooth_unavailable">Bluetooth indisponible sur ce téléphone.</string>
+    <string name="bluetooth_disabled">Activez le Bluetooth dans les réglages du téléphone.</string>
+    <string name="permission_denied">L’autorisation Bluetooth est nécessaire.</string>
+    <string name="connection_failed">Connexion impossible.</string>
+    <string name="connection_lost">Connexion Bluetooth perdue.</string>
+    <string name="color_dialog_title">Choisir une couleur</string>
+    <string name="color_preview_description">Couleur sélectionnée</string>
+    <!-- Splash Screen RoseLed -->
+    <string name="splash_logo_description">Logo RoseLed</string>
+    <string name="splash_title">RoseLed Controller Pro</string>
+    <string name="splash_subtitle">Contrôlez • Créez • Illuminez</string>
+    <string name="splash_bluetooth">Bluetooth</string>
+    <string name="splash_firmware">Firmware</string>
+    <string name="splash_interface">Interface</string>
+    <string name="splash_ready">Contrôleur prêt</string>
+
+</resources>
+

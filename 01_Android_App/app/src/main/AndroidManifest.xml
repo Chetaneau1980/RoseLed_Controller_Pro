@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="true" />
+
+    <!-- Bluetooth Android 10 et 11 -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+
+    <!-- Bluetooth Android 12 et versions suivantes -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="RoseLed Controller Pro"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.RoseLedControllerPro">
+
+        <!-- Écran de démarrage -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <!-- Écran principal -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Écran Favoris -->
+        <activity
+            android:name=".FavorisActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Écran Animations -->
+        <activity
+            android:name=".AnimationsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Écran Minuteur -->
+        <activity
+            android:name=".MinuteurActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Écran Paramètres -->
+        <activity
+            android:name=".ParametresActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Écran À propos -->
+        <activity
+            android:name=".AProposActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+    </application>
+
+</manifest>
