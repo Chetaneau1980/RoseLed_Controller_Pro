@@ -5,13 +5,13 @@
 ### Professional ESP32 WS2812B LED Controller
 ### Projet Open Source — Octobre Rose
 
-[![Version](https://img.shields.io/badge/version-1.0.0%20Alpha-ff1493?style=for-the-badge)](https://github.com/)
+[![Version](https://img.shields.io/badge/version-1.0.0%20Alpha-ff1493?style=for-the-badge)](https://github.com/Chetaneau1980/RoseLed_Controller_Pro)
 [![ESP32](https://img.shields.io/badge/ESP32-WROOM--32E-000000?style=for-the-badge&logo=espressif)](https://www.espressif.com/)
 [![Arduino](https://img.shields.io/badge/Arduino-IDE-00979D?style=for-the-badge&logo=arduino)](https://www.arduino.cc/)
 [![Bluetooth](https://img.shields.io/badge/Bluetooth-Classic-0082FC?style=for-the-badge&logo=bluetooth)](https://www.bluetooth.com/)
 [![FastLED](https://img.shields.io/badge/FastLED-WS2812B-ff1493?style=for-the-badge)](https://fastled.io/)
-[![LEDs](https://img.shields.io/badge/LEDs-560-ff69b4?style=for-the-badge)](https://github.com/)
-[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-ff1493?style=for-the-badge)](https://github.com/)
+[![LEDs](https://img.shields.io/badge/LEDs-560-ff69b4?style=for-the-badge)](https://github.com/Chetaneau1980/RoseLed_Controller_Pro)
+[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-ff1493?style=for-the-badge)](https://github.com/Chetaneau1980/RoseLed_Controller_Pro)
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
 
 **Un contrôleur ESP32 conçu pour piloter un panneau de 560 LEDs WS2812B
