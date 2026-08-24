@@ -10,6 +10,8 @@
 [![Arduino](https://img.shields.io/badge/Arduino-IDE-00979D?style=for-the-badge&logo=arduino)](https://www.arduino.cc/)
 [![Bluetooth](https://img.shields.io/badge/Bluetooth-Classic-0082FC?style=for-the-badge&logo=bluetooth)](https://www.bluetooth.com/)
 [![FastLED](https://img.shields.io/badge/FastLED-WS2812B-ff1493?style=for-the-badge)](https://fastled.io/)
+[![LEDs](https://img.shields.io/badge/LEDs-560-ff69b4?style=for-the-badge)](https://github.com/)
+[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-ff1493?style=for-the-badge)](https://github.com/)
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
 
 **Un contrôleur ESP32 conçu pour piloter un panneau de 560 LEDs WS2812B
@@ -63,7 +65,7 @@ Le contrôleur communique avec une **application Android dédiée** grâce au
 
 # 🔥 Matériel
 
-### Contrôleur
+## Contrôleur
 
 - **ESP32-WROOM-32E**
 - Carte : **RoseLed Controller Pro Rev.A**
@@ -71,14 +73,14 @@ Le contrôleur communique avec une **application Android dédiée** grâce au
 - Sortie DATA WS2812B
 - Niveau logique adapté via **74AHCT1G125**
 
-### Éclairage
+## Éclairage
 
 - **560 × WS2812B**
 - Alimentation : **5 V**
 - Signal : **GRB**
 - Données sur **GPIO 23**
 
-### Sécurité
+## Sécurité
 
 La luminosité maximale est volontairement limitée par le firmware.
 
