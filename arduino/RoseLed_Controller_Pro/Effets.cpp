@@ -2,13 +2,13 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : Effets
- * Version     : 0.2.1 Alpha
+ * Version     : 0.3.2 Alpha
  *
  * Description :
- * Gestion des effets lumineux du RoseLed Controller Pro.
+ * Effets lumineux du RoseLed Controller Pro.
  *
- * Ce module contient les effets élémentaires utilisés
- * par le gestionnaire d'animations.
+ * Les effets sont non bloquants afin de conserver
+ * une communication Bluetooth réactive.
  *
  * Projet :
  *   Octobre Rose
@@ -27,6 +27,38 @@
  ******************************************************************************/
 
 #include "Effets.h"
+#include "LedStrip.h"
+#include "Configuration.h"
+#include "Couleurs.h"
+
+#include <FastLED.h>
+
+//==========================================================
+// Variables internes
+//==========================================================
+
+namespace
+{
+    unsigned long dernierRafraichissement = 0;
+
+    uint8_t phaseRespiration = 0;
+    bool respirationMonte = true;
+
+    uint8_t teinteArcEnCiel = 0;
+
+    uint8_t phaseOcean = 0;
+
+    bool etatFlash = false;
+
+    uint16_t positionOctobreRose = 0;
+
+    constexpr uint16_t INTERVALLE_RESPIRATION = 20;
+    constexpr uint16_t INTERVALLE_ARC_EN_CIEL = 25;
+    constexpr uint16_t INTERVALLE_FEU = 45;
+    constexpr uint16_t INTERVALLE_OCEAN = 35;
+    constexpr uint16_t INTERVALLE_FLASH = 250;
+    constexpr uint16_t INTERVALLE_OCTOBRE_ROSE = 35;
+}
 
 //==========================================================
 // Initialisation
@@ -34,49 +66,245 @@
 
 void InitialiserEffets(void)
 {
-    // Initialisation du module des effets lumineux.
+    dernierRafraichissement = 0;
+
+    phaseRespiration = 0;
+    respirationMonte = true;
+
+    teinteArcEnCiel = 0;
+    phaseOcean = 0;
+
+    etatFlash = false;
+    positionOctobreRose = 0;
 }
 
 //==========================================================
-// Effets lumineux
+// Couleur fixe
 //==========================================================
 
 void EffetCouleurFixe(void)
 {
-    // Affichage d'une couleur fixe.
+    const CRGB couleurFixe =
+            ObtenirCouleurFixe();
+
+    fill_solid(
+        leds,
+        NOMBRE_LEDS,
+        couleurFixe
+    );
 }
+
+//==========================================================
+// Respiration rose
+//==========================================================
 
 void EffetRespirationRose(void)
 {
-    // Animation officielle Octobre Rose.
+    const unsigned long maintenant = millis();
+
+    if (maintenant - dernierRafraichissement
+            < INTERVALLE_RESPIRATION)
+    {
+        return;
+    }
+
+    dernierRafraichissement = maintenant;
+
+    if (respirationMonte)
+    {
+        if (phaseRespiration < 250)
+        {
+            phaseRespiration += 5;
+        }
+        else
+        {
+            respirationMonte = false;
+        }
+    }
+    else
+    {
+        if (phaseRespiration > 20)
+        {
+            phaseRespiration -= 5;
+        }
+        else
+        {
+            respirationMonte = true;
+        }
+    }
+
+    CRGB couleur =
+            COULEUR_OCTOBRE_ROSE;
+
+    couleur.nscale8_video(
+        phaseRespiration
+    );
+
+    fill_solid(
+        leds,
+        NOMBRE_LEDS,
+        couleur
+    );
 }
+
+//==========================================================
+// Arc-en-ciel
+//==========================================================
 
 void EffetArcEnCiel(void)
 {
-    // Animation Arc-en-ciel.
+    const unsigned long maintenant = millis();
+
+    if (maintenant - dernierRafraichissement
+            < INTERVALLE_ARC_EN_CIEL)
+    {
+        return;
+    }
+
+    dernierRafraichissement = maintenant;
+
+    fill_rainbow(
+        leds,
+        NOMBRE_LEDS,
+        teinteArcEnCiel,
+        4
+    );
+
+    teinteArcEnCiel++;
 }
 
-void EffetChenillard(void)
+//==========================================================
+// Feu
+//==========================================================
+
+void EffetFeu(void)
 {
-    // Animation Chenillard.
+    const unsigned long maintenant = millis();
+
+    if (maintenant - dernierRafraichissement
+            < INTERVALLE_FEU)
+    {
+        return;
+    }
+
+    dernierRafraichissement = maintenant;
+
+    for (uint16_t i = 0;
+         i < NOMBRE_LEDS;
+         i++)
+    {
+        const uint8_t chaleur =
+                random8(120, 255);
+
+        leds[i] =
+                ColorFromPalette(
+                    HeatColors_p,
+                    chaleur
+                );
+    }
 }
 
-void EffetScintillement(void)
+//==========================================================
+// Océan
+//==========================================================
+
+void EffetOcean(void)
 {
-    // Animation Scintillement.
+    const unsigned long maintenant = millis();
+
+    if (maintenant - dernierRafraichissement
+            < INTERVALLE_OCEAN)
+    {
+        return;
+    }
+
+    dernierRafraichissement = maintenant;
+
+    for (uint16_t i = 0;
+         i < NOMBRE_LEDS;
+         i++)
+    {
+        const uint8_t vague =
+                sin8(
+                    (i * 4)
+                    + phaseOcean
+                );
+
+        leds[i] =
+                ColorFromPalette(
+                    OceanColors_p,
+                    vague
+                );
+    }
+
+    phaseOcean += 2;
 }
 
-void EffetBattementCoeur(void)
+//==========================================================
+// Flash
+//==========================================================
+
+void EffetFlash(void)
 {
-    // Animation Battement de cœur.
+    const unsigned long maintenant = millis();
+
+    if (maintenant - dernierRafraichissement
+            < INTERVALLE_FLASH)
+    {
+        return;
+    }
+
+    dernierRafraichissement = maintenant;
+
+    etatFlash = !etatFlash;
+
+    if (etatFlash)
+    {
+        fill_solid(
+            leds,
+            NOMBRE_LEDS,
+            COULEUR_OCTOBRE_ROSE
+        );
+    }
+    else
+    {
+        fill_solid(
+            leds,
+            NOMBRE_LEDS,
+            CRGB::Black
+        );
+    }
 }
 
-void EffetVagueRose(void)
-{
-    // Animation Vague Rose.
-}
+//==========================================================
+// Animation officielle Octobre Rose
+//==========================================================
 
-void EffetRubanRose(void)
+void EffetOctobreRose(void)
 {
-    // Animation Ruban Octobre Rose.
+    const unsigned long maintenant = millis();
+
+    if (maintenant - dernierRafraichissement
+            < INTERVALLE_OCTOBRE_ROSE)
+    {
+        return;
+    }
+
+    dernierRafraichissement = maintenant;
+
+    fadeToBlackBy(
+        leds,
+        NOMBRE_LEDS,
+        25
+    );
+
+    leds[positionOctobreRose] =
+            COULEUR_OCTOBRE_ROSE;
+
+    positionOctobreRose++;
+
+    if (positionOctobreRose >= NOMBRE_LEDS)
+    {
+        positionOctobreRose = 0;
+    }
 }

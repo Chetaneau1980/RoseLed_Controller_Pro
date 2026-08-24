@@ -5,13 +5,10 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : Effets
- * Version     : 0.2.1 Alpha
+ * Version     : 0.3.0 Alpha
  *
  * Description :
  * Gestion des effets lumineux du RoseLed Controller Pro.
- *
- * Ce module contient les effets élémentaires utilisés
- * par le gestionnaire d'animations.
  *
  * Projet :
  *   Octobre Rose
@@ -35,7 +32,6 @@
 // Initialisation
 //==========================================================
 
-// Initialise le module des effets
 void InitialiserEffets(void);
 
 //==========================================================
@@ -45,25 +41,22 @@ void InitialiserEffets(void);
 // Couleur fixe
 void EffetCouleurFixe(void);
 
-// Respiration officielle Octobre Rose
+// Respiration rose
 void EffetRespirationRose(void);
 
 // Arc-en-ciel
 void EffetArcEnCiel(void);
 
-// Chenillard
-void EffetChenillard(void);
+// Feu
+void EffetFeu(void);
 
-// Scintillement
-void EffetScintillement(void);
+// Océan
+void EffetOcean(void);
 
-// Battement de cœur
-void EffetBattementCoeur(void);
+// Flash
+void EffetFlash(void);
 
-// Vague lumineuse
-void EffetVagueRose(void);
-
-// Ruban Octobre Rose
-void EffetRubanRose(void);
+// Animation officielle Octobre Rose
+void EffetOctobreRose(void);
 
 #endif // EFFETS_H

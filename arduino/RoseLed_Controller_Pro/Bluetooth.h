@@ -34,7 +34,7 @@
  ******************************************************************************/
 
 #include <Arduino.h>
-
+#include <BluetoothSerial.h>
 //==========================================================
 // Initialisation
 //==========================================================
@@ -48,5 +48,6 @@ void InitialiserBluetooth(void);
 
 // Gestion de la communication Bluetooth
 void GererBluetooth(void);
-
+// Objet Bluetooth global
+extern BluetoothSerial SerialBT;
 #endif // BLUETOOTH_H

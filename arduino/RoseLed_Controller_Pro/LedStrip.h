@@ -5,7 +5,7 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : LedStrip
- * Version     : 0.2.1 Alpha
+ * Version     : 0.3.1 Alpha
  *
  * Description :
  * Gestion complète du bandeau de LEDs WS2812B.
@@ -15,7 +15,8 @@
  *  - le rafraîchissement du bandeau ;
  *  - l'allumage et l'extinction des LEDs ;
  *  - la gestion de la luminosité ;
- *  - la gestion des couleurs.
+ *  - la gestion des couleurs ;
+ *  - la mémorisation de la couleur fixe.
  *
  * Projet :
  *   Octobre Rose
@@ -33,11 +34,16 @@
  *   ChatGPT (OpenAI)
  ******************************************************************************/
 
-#ifndef ARDUINO_H
 #include <Arduino.h>
-#endif
-
 #include <FastLED.h>
+
+#include "Configuration.h"
+
+//==========================================================
+// Tableau des LEDs
+//==========================================================
+
+extern CRGB leds[NOMBRE_LEDS];
 
 //==========================================================
 // Initialisation
@@ -55,16 +61,24 @@ void ActualiserLedStrip(void);
 // Commandes générales
 //==========================================================
 
-// Éteint toutes les LEDs
 void EteindreLedStrip(void);
 
-// Allume toutes les LEDs avec la couleur officielle
 void AllumerLedStrip(void);
 
-// Modifie la luminosité générale
-void ReglerLuminosite(uint8_t luminosite);
+void ReglerLuminosite(
+    uint8_t luminosite
+);
 
-// Modifie la couleur de toutes les LEDs
-void ReglerCouleur(uint8_t rouge, uint8_t vert, uint8_t bleu);
+void ReglerCouleur(
+    uint8_t rouge,
+    uint8_t vert,
+    uint8_t bleu
+);
+
+//==========================================================
+// Couleur fixe mémorisée
+//==========================================================
+
+CRGB ObtenirCouleurFixe(void);
 
 #endif // LEDSTRIP_H

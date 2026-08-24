@@ -2,23 +2,40 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : Animations
- * Version     : 0.2.1 Alpha
+ * Version     : 0.3.0 Alpha
  *
  * Description :
  * Gestion des animations lumineuses du panneau WS2812B.
+ *
+ * Projet :
+ *   Octobre Rose
+ *
+ * Carte :
+ *   RoseLed Controller Pro Rev.A
+ *
+ * Microcontrôleur :
+ *   ESP32-WROOM-32E
+ *
+ * Concepteur électronique et développeur :
+ *   Jérémie
+ *
+ * Assistance au développement logiciel :
+ *   ChatGPT (OpenAI)
  ******************************************************************************/
 
 #include "Animations.h"
 #include "Effets.h"
 #include "GestionnaireAnimations.h"
 #include "LedStrip.h"
+
 //==========================================================
 // Initialisation
 //==========================================================
 
 void InitialiserAnimations(void)
 {
-    // Initialisation des animations
+    // Les animations démarrent dans l'état défini
+    // par le GestionnaireAnimations.
 }
 
 //==========================================================
@@ -45,12 +62,20 @@ void GererAnimations(void)
             AnimationArcEnCiel();
             break;
 
-        case AnimationActive::CHENILLARD:
-            AnimationChenillard();
+        case AnimationActive::FEU:
+            AnimationFeu();
             break;
 
-        case AnimationActive::SCINTILLEMENT:
-            AnimationScintillement();
+        case AnimationActive::OCEAN:
+            AnimationOcean();
+            break;
+
+        case AnimationActive::FLASH:
+            AnimationFlash();
+            break;
+
+        case AnimationActive::OCTOBRE_ROSE:
+            AnimationOctobreRose();
             break;
 
         default:
@@ -83,12 +108,22 @@ void AnimationArcEnCiel(void)
     EffetArcEnCiel();
 }
 
-void AnimationChenillard(void)
+void AnimationFeu(void)
 {
-    EffetChenillard();
+    EffetFeu();
 }
 
-void AnimationScintillement(void)
+void AnimationOcean(void)
 {
-    EffetScintillement();
+    EffetOcean();
+}
+
+void AnimationFlash(void)
+{
+    EffetFlash();
+}
+
+void AnimationOctobreRose(void)
+{
+    EffetOctobreRose();
 }

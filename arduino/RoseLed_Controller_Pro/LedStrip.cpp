@@ -1,26 +1,62 @@
 /******************************************************************************
  * RoseLed Controller Pro Firmware
- * Version : 0.2.0 Alpha
+ * ---------------------------------------------------------------------------
+ * Module      : LedStrip
+ * Version     : 0.3.1 Alpha
  *
- * Projet : Octobre Rose
- * Carte : RoseLed Controller Pro Rev.A
- * Microcontrôleur : ESP32-WROOM-32E
+ * Description :
+ * Gestion complète du panneau de LEDs WS2812B.
+ *
+ * Ce module assure :
+ *  - l'initialisation de FastLED ;
+ *  - le rafraîchissement des LEDs ;
+ *  - l'allumage et l'extinction ;
+ *  - la gestion de la luminosité ;
+ *  - la gestion de la couleur fixe ;
+ *  - la mémorisation de la dernière couleur sélectionnée.
+ *
+ * Projet :
+ *   Octobre Rose
+ *
+ * Carte :
+ *   RoseLed Controller Pro Rev.A
+ *
+ * Microcontrôleur :
+ *   ESP32-WROOM-32E
  *
  * Concepteur électronique et développeur :
- * Jérémie
+ *   Jérémie
  *
  * Assistance au développement logiciel :
- * ChatGPT (OpenAI)
- *
- * Gestion du bandeau de LEDs WS2812B
+ *   ChatGPT (OpenAI)
  ******************************************************************************/
 
 #include "LedStrip.h"
 #include "Configuration.h"
 #include "Broches.h"
 #include "Couleurs.h"
+
+#include <FastLED.h>
+
+//==========================================================
 // Tableau des LEDs
+//==========================================================
+
 CRGB leds[NOMBRE_LEDS];
+
+//==========================================================
+// Variables privées
+//==========================================================
+
+namespace
+{
+
+// Couleur fixe actuellement sélectionnée.
+// Au démarrage, la couleur officielle Octobre Rose est utilisée.
+CRGB couleurFixe =
+        COULEUR_OCTOBRE_ROSE;
+
+}
 
 //==========================================================
 // Initialisation
@@ -28,13 +64,25 @@ CRGB leds[NOMBRE_LEDS];
 
 void InitialiserLedStrip(void)
 {
-    // Initialisation de FastLED
-    FastLED.addLeds<WS2812B, BROCHE_LED_DATA, GRB>(leds, NOMBRE_LEDS);
+    FastLED.addLeds<
+            WS2812B,
+            BROCHE_LED_DATA,
+            GRB
+    >(
+            leds,
+            NOMBRE_LEDS
+    );
 
-    // Luminosité par défaut
-    FastLED.setBrightness(LUMINOSITE_DEFAUT);
+    // Luminosité de sécurité au démarrage.
+    FastLED.setBrightness(
+            LUMINOSITE_DEFAUT
+    );
 
-    // Toutes les LEDs éteintes au démarrage
+    // Couleur fixe initiale.
+    couleurFixe =
+            COULEUR_OCTOBRE_ROSE;
+
+    // Le panneau reste éteint au démarrage.
     FastLED.clear();
     FastLED.show();
 }
@@ -49,7 +97,7 @@ void ActualiserLedStrip(void)
 }
 
 //==========================================================
-// Commandes générales
+// Extinction
 //==========================================================
 
 void EteindreLedStrip(void)
@@ -58,21 +106,70 @@ void EteindreLedStrip(void)
     FastLED.show();
 }
 
+//==========================================================
+// Allumage général
+//==========================================================
+
 void AllumerLedStrip(void)
 {
-    // Allume toutes les LEDs avec la couleur officielle
-    fill_solid(leds, NOMBRE_LEDS, COULEUR_OCTOBRE_ROSE);
+    couleurFixe =
+            COULEUR_OCTOBRE_ROSE;
+
+    fill_solid(
+            leds,
+            NOMBRE_LEDS,
+            couleurFixe
+    );
 
     FastLED.show();
 }
-void ReglerLuminosite(uint8_t luminosite)
+
+//==========================================================
+// Luminosité
+//==========================================================
+
+void ReglerLuminosite(
+        uint8_t luminosite)
 {
-    FastLED.setBrightness(luminosite);
+    FastLED.setBrightness(
+            luminosite
+    );
+
     FastLED.show();
 }
 
-void ReglerCouleur(uint8_t rouge, uint8_t vert, uint8_t bleu)
+//==========================================================
+// Couleur fixe
+//==========================================================
+
+void ReglerCouleur(
+        uint8_t rouge,
+        uint8_t vert,
+        uint8_t bleu)
 {
-    fill_solid(leds, NOMBRE_LEDS, CRGB(rouge, vert, bleu));
+    // Mémorise la couleur sélectionnée.
+    couleurFixe =
+            CRGB(
+                    rouge,
+                    vert,
+                    bleu
+            );
+
+    // Applique immédiatement la couleur.
+    fill_solid(
+            leds,
+            NOMBRE_LEDS,
+            couleurFixe
+    );
+
     FastLED.show();
+}
+
+//==========================================================
+// Lecture de la couleur fixe
+//==========================================================
+
+CRGB ObtenirCouleurFixe(void)
+{
+    return couleurFixe;
 }

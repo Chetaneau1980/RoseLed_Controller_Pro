@@ -5,7 +5,7 @@
  * RoseLed Controller Pro Firmware
  * ---------------------------------------------------------------------------
  * Module      : GestionnaireAnimations
- * Version     : 0.2.1 Alpha
+ * Version     : 0.3.0 Alpha
  *
  * Description :
  * Gestionnaire central des animations du RoseLed Controller Pro.
@@ -13,7 +13,6 @@
  * Ce module est responsable de :
  *  - mémoriser l'animation actuellement sélectionnée ;
  *  - permettre au Bluetooth de changer d'animation ;
- *  - permettre au futur mode WLED de sélectionner une animation ;
  *  - fournir l'animation active au module Animations.
  *
  * Projet :
@@ -44,8 +43,10 @@ enum class AnimationActive
     FIXE,
     RESPIRATION,
     ARC_EN_CIEL,
-    CHENILLARD,
-    SCINTILLEMENT
+    FEU,
+    OCEAN,
+    FLASH,
+    OCTOBRE_ROSE
 };
 
 //==========================================================
